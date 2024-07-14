@@ -1,13 +1,49 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 62.5%;
+  }
+
+  /* Define the regular variable font */
+  @font-face {
+    font-family: 'Karla';
+    src: url('./fonts/Karla-VariableFont_wght.ttf')
+      format('truetype-variations');
+    font-weight: 100 700;
+    font-style: normal;
+  }
+
+  /* Define the italic variable font */
+  @font-face {
+    font-family: 'Karla';
+    src: url('./fonts/Karla-Italic-VariableFont_wght.ttf')
+      format('truetype-variations');
+    font-weight: 100 700;
+    font-style: italic;
+  }
+
+  body {
+    font-family: 'Karla', sans-serif;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer utilities {
+}
+
+@layer components {
+}
+
+.placeholder-style::placeholder {
+  color: #000;
+  font-size: 2rem;
+  padding-left: 4rem;
 }
