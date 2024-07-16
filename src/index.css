@@ -36,14 +36,95 @@
   }
 }
 
-@layer utilities {
-}
-
 @layer components {
 }
 
-.placeholder-style::placeholder {
-  color: #000;
-  font-size: 2rem;
-  padding-left: 4rem;
+@layer utilities {
+  .placeholder-style::placeholder {
+    color: #000;
+    font-size: 2rem;
+    padding-left: 4rem;
+  }
+
+  .radiobutton input {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    border-color: white;
+    border: 1px solid hsl(169, 82%, 27%);
+    outline: none;
+    transition: ease-in-out;
+    position: relative;
+  }
+
+  .radiobutton input::before {
+    content: '';
+    display: block;
+    width: 0.6em;
+    height: 0.6em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    background-color: transparent;
+    padding: 0.2px; /* Adding inner space */
+    box-sizing: border-box;
+  }
+
+  .radiobutton input:checked {
+    background: hsl(160, 10%, 94%);
+    border: 1px solid hsl(169, 82%, 27%);
+  }
+
+  .radiobutton input:checked:before {
+    background: hsl(169, 82%, 27%);
+  }
+
+  .checkboxbutton input {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border-color: white;
+    border: 1px solid hsl(169, 82%, 27%);
+    outline: none;
+    width: 1em;
+    height: 1em;
+    transition: ease-in-out;
+    padding: 6px;
+    position: relative;
+  }
+
+  .checkboxbutton input::before {
+    content: '\2714';
+    display: block;
+    width: 1em;
+    height: 1em;
+    top: 50%;
+    left: 50%;
+    color: hsl(169, 82%, 27%);
+    transform: translate(-50%, -50%);
+    font-size: 8px;
+    position: absolute;
+    background-color: transparent;
+    box-sizing: border-box;
+  }
+  .checkboxbutton input:checked {
+    background: hsl(169, 82%, 27%);
+    border: 1px solid hsl(169, 82%, 27%);
+  }
+
+  .checkboxbutton input:checked::before {
+    background: hsl(169, 82%, 27%);
+    color: white;
+  }
+
+  .checkboxbutton input:active,
+  .checkboxbutton input:checked:active {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
+      inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+  }
 }

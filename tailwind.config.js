@@ -46,6 +46,12 @@ module.exports = {
         'Grey(medium)': 'hsl(186, 15%, 59%)',
         'Grey(darker)': 'hsl(187, 24%, 22%)',
       },
+      variants: {
+        extend: {
+          backgroundColor: ['checked'],
+          borderColor: ['checked'],
+        },
+      },
     },
   },
   plugins: [],
