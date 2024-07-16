@@ -29,10 +29,9 @@ function Form() {
     lastName: '',
     email: '',
     message: '',
+    inqury: '',
+    consent: false,
   });
-
-  // const isFormComplete =
-  //   person.firstName && person.lastName && person.email && person.message;
 
   const validate = () => {
     let newErrors = {};
@@ -45,7 +44,11 @@ function Form() {
       newErrors.email = 'Please enter a valid email address';
     }
 
-    if (!person.message) newErrors.message = 'Message is required.';
+    if (!person.message)
+      newErrors.message = 'Message is required. Tell us more about yourself';
+    if (!person.inqury) newErrors = 'Please your inqury is needed';
+    if (!person.consent)
+      newErrors = 'Please you are must consent to be contacted';
     return newErrors;
   };
 
@@ -98,11 +101,33 @@ function Form() {
     });
   };
 
+  const handleInquryChange = (e) => {
+    const { type, value } = e.target;
+    setPerson({
+      ...person,
+      inqury: type === 'radio' ? value : '',
+    });
+  };
+  const handleConsentChange = (e) => {
+    const { type, value } = e.target;
+    setPerson({
+      ...person,
+      consent: type === 'checkbox' ? value : '',
+    });
+  };
+
+  const handleKeydown = (e) => {
+    if (e.key === 'Enter') {
+      handleSubmit(e);
+    }
+  };
+
   return (
     <div>
       <form
         className="bg-white min-h-screen rounded-2xl p-10"
         onSubmit={handleSubmit}
+        onKeyDown={handleKeydown}
       >
         <h1 className="text-6xl text-Grey(darker) font-karla font-bold tracking-tighter mb-10">
           Contact Us
@@ -114,10 +139,12 @@ function Form() {
             </label>
             <input
               type="text"
+              name="last name"
               value={person.firstName}
               onChange={handleFirstNameChange}
               placeholder="Enter your first name"
               aria-required="true"
+              required
               disabled={status === 'submitting'}
               className="form-control border-2 text-2xl text-Grey(medium) rounded-2xl w-full placeholder-first p-4 border-gray-300 cursor-pointer focus: outline-none hover:border-Green(medium) hover:transition transform duration-300 ease-in-out"
             />
@@ -131,10 +158,12 @@ function Form() {
             </label>
             <input
               type="text"
+              name="last name"
               value={person.lastName}
               onChange={handleLastNameChange}
               placeholder="Enter your last name"
               aria-required="true"
+              required
               disabled={status === 'submitting'}
               className="form-control border-2 cursor-pointer text-2xl text-Grey(medium) rounded-2xl w-full p-4 border-gray-300 focus: outline-none hover:border-Green(medium) hover:transition transform duration-300 ease-in-out"
             />
@@ -149,11 +178,13 @@ function Form() {
           </label>
           <input
             type="text"
+            name="email"
             value={person.email}
             onChange={handleEmailChange}
             placeholder="Enter your a valid email address"
             disabled={status === 'submitting'}
             aria-required="true"
+            required
             className="form-control border-2 cursor-pointer text-2xl text-Grey(medium) rounded-2xl w-full p-4 border-gray-300 focus: outline-none hover:border-Green(medium) hover:transition transform all duration-300 ease-in-out"
           />
           {errors.email && (
@@ -168,7 +199,10 @@ function Form() {
             <label className="inline-flex relative items-center gap-8 text-xl text-Grey(darker)">
               <input
                 type="radio"
-                name="color"
+                name="inqury"
+                value="General Enqury"
+                onChange={handleInquryChange}
+                checked={person.inqury === 'General Enqury'}
                 className="form-check-input inline-block cursor-pointer focus:outline-non"
               />
               General Enqury
@@ -178,7 +212,10 @@ function Form() {
             <label className="inline-flex relative items-center gap-6 text-xl text-Grey(darker) ">
               <input
                 type="radio"
-                name="color"
+                name="inqury"
+                value="Support Request"
+                onChange={handleInquryChange}
+                checked={person.inqury === 'Support Request'}
                 className="inline-block form-check-input"
               />
               Support Request
@@ -193,6 +230,8 @@ function Form() {
             rows="1"
             cols="20"
             type="text"
+            name="message"
+            required
             value={person.message}
             disabled={status === 'submitting'}
             aria-required="true"
@@ -208,7 +247,11 @@ function Form() {
         <div className="flex gap-6 mb-6 checkboxbutton">
           <input
             type="checkbox"
-            name="color"
+            name="consent"
+            value="consent"
+            onChange={handleConsentChange}
+            checked={person.consent === 'consent'}
+            required
             className="form-check-input bg-Grey(medium)"
           />
           <label className="text-2xl text-Grey(darker) tracking-tight leading-6">
