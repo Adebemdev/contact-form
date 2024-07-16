@@ -222,7 +222,7 @@ function Form() {
             </label>
           </div>
         </div>
-        <div className="flex flex-col gap-4 mb-8">
+        <div className="flex flex-col gap-4 mb-12">
           <label className="text-3xl font-karla  text-Grey(darker)">
             Messages <span className="text-Green(medium) p-4">*</span>
           </label>
@@ -237,7 +237,7 @@ function Form() {
             aria-required="true"
             placeholder="Tell us more about yourself"
             onChange={handleMessageChange}
-            className="form-control border-2 cursor-pointer text-2xl text-Grey(medium) rounded-md w-full p-2 border-gray-300 focus: outline-none hover:border-Green(medium) hover:transition transform duration-300 ease-in-out"
+            className="form-control border-2 cursor-pointer text-2xl text-Grey(medium) rounded-md w-full p-8 border-gray-300 focus: outline-none hover:border-Green(medium) hover:transition transform duration-300 ease-in-out"
           />
           {errors.message && (
             <p style={{ color: 'hsl(0, 66%, 54%)' }}>{errors.message}</p>
@@ -261,7 +261,7 @@ function Form() {
         <button
           type="submit"
           disabled={status === 'submitting'}
-          className="inline-block w-full cursor-pointer text-white text-2xl bg-Green(medium) p-4 rounded-2xl hover:bg-Grey(darker) transition transform duration-200 ease-in-out"
+          className="inline-block w-full cursor-pointer text-white text-2xl bg-Green(medium) p-4 rounded-2xl hover:bg-Grey(darker) transition transform duration-200 ease-in-out mt-8"
         >
           Submit
         </button>

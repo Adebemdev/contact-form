@@ -91,23 +91,22 @@
     border-color: white;
     border: 1px solid hsl(169, 82%, 27%);
     outline: none;
-    width: 1em;
-    height: 1em;
+    width: 1.5em;
+    height: 1.5em;
     transition: ease-in-out;
-    padding: 6px;
     position: relative;
   }
 
   .checkboxbutton input::before {
     content: '\2714';
     display: block;
-    width: 1em;
-    height: 1em;
+    width: 1.5em;
+    height: 1.5em;
     top: 50%;
     left: 50%;
     color: hsl(169, 82%, 27%);
     transform: translate(-50%, -50%);
-    font-size: 8px;
+    font-size: 10px;
     position: absolute;
     background-color: transparent;
     box-sizing: border-box;
